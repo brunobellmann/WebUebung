@@ -1,99 +1,96 @@
-/* Desktop Styles */
-@media only screen and (min-width: 1200px) {
+/* Desktop Styles 
+@media only screen and (min-width: 321px) { */
+
+    div { -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden; 
+        -ms-backface-visibility: hidden; 
+        backface-visibility: hidden; 
+    }
+
     html, body {
         height: 100%;
-        margin: 0 auto;
         font-family: 'Roboto', sans-serif;
         font-size: 14px;
         line-height: 145%;
         font-style: normal;
+        margin: 0 auto;
     }
-    
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        background-image: linear-gradient(to top, #efefef 0%, #d1d1d1 60%);
+        border-bottom: 1px solid #dbdbdb;
+        height: 80px;
+        margin-top: 0px;
+    }
+
+    .navList li{
+        float: left;
+        list-style-type: none;
+        text-align: center;
+        display: list-item;
+        padding: 30px 10px 30px 10px;
+    }
+    .navImg {
+        background-image: url("../img/header.png");
+        background-position: 0px 80px;
+        z-index: 0;
+        float: left;
+        height: 80px;
+        width: 150px;
+        padding: 0px !important;
+    }
+
+    .navImg:hover {
+        background-position: 0px 0px;
+    } 
+
+    .navList li:first-child {
+        margin-left:100px;
+        margin-right: 10px;
+        height: 80px;
+    }
+
+    .navList li:nth-child(even) {
+        border-left: 1px solid #dbdbdb;
+        border-right: 1px solid #dbdbdb;
+    }
+
+    .navList li:last-child {
+        border-right: 1px solid #dbdbdb;
+    }
+
     .footer {
-        position: absolute;
         bottom: 0;
         width: 100%;
         border-top: 1px solid #7da06a;
+        font-size: 12px;
+        margin-top: 50px;
     }
     
     .footerLeft {
         float: left;
+        text-align: left;
     }
     
     .footerRight {
         float: right;
+        text-align: right;
     }
     
     .container {
-        min-height: 100%;
-        position: relative;
         width: 1170px !important;
         margin: 0 auto;
     }
-  }
   
-  /* Tablet Styles */
+  
+  /* Tablet Styles 
   @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    html, body {
-        height: 100%;
-        margin: 0 auto;
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        line-height: 145%;
-        font-style: normal;
-    }
-    
-    .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        border-top: 1px solid #7da06a;
-    }
-    
-    .footerLeft {
-        float: left;
-    }
-    
-    .footerRight {
-        float: right;
-    }
-    
-    .container {
-        min-height: 100%;
-        position: relative;
-        width: 1170px !important;
-    }
-  }
+
   
-  /* Mobile Styles */
+  /* Mobile Styles 
   @media only screen and (min-width: 320px) and (max-width: 768px) {
-    html, body {
-        height: 100%;
-        margin: 0 auto;
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        line-height: 145%;
-        font-style: normal;
-    }
-    
-    .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        border-top: 1px solid #7da06a;
-    }
-    
-    .footerLeft {
-        float: left;
-    }
-    
-    .footerRight {
-        float: right;
-    }
-    
-    .container {
-        min-height: 100%;
-        position: relative;
-        width: 1170px !important;
-    }
-  }
+  } */
