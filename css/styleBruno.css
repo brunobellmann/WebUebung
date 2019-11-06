@@ -1,29 +1,49 @@
 /* CSS Bruno */
 
-/* Desktop Styles /
-@media only screen and (min-width: 1200px) {
-    
-}
-
-/* Tablet Styles
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-    
-}
-
-/* Mobile Styles
-@media only screen and (min-width: 320px) and (max-width: 768px) {
-    
-}*/
 
 .textBox {
     width: auto;
-    column-width: calc(1170px/4);
     border-radius: 0 0 5px 5px;
     border-top: 1px solid #9fb990;
     border-left: 1px solid #e2e2e2;
     border-right: 1px solid #e2e2e2;
     border-bottom: 1px solid #e2e2e2;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
-    padding: 15px;
-
+    padding: 2%;
+    margin: 2%;
+    margin-top: 15px;
 }
+
+/* Desktop Styles */
+@media only screen and (min-width: 1200px) {
+    .textBox {
+        width: auto;
+        border-radius: 0 0 5px 5px;
+        border-top: 1px solid #9fb990;
+        border-left: 1px solid #e2e2e2;
+        border-right: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+        padding: 15px;
+        margin: 0 auto;
+        margin-top: 15px;
+        padding: 2%;
+    }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+    .textBox {
+        width: auto;
+        column-width: 1170px/4;
+        border-radius: 0 0 5px 5px;
+        border-top: 1px solid #9fb990;
+        border-left: 1px solid #e2e2e2;
+        border-right: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+        margin-top: 15px;
+    }
+}
+
+
