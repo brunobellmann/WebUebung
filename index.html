@@ -96,25 +96,32 @@
         Show/Hide:&nbsp;
         <a id="tBirth" class="toggle" onclick="toggleRow('birth', this.id)">birth rate </a>|
         <a id="tCellphone" class="toggle" onclick="toggleRow('cellphone', this.id)">cellphones </a>|
-        <a id="tchild" class="toggle" onclick="toggleRow('child', this.id)">children / woman </a>|
+        <a id="tChild" class="toggle" onclick="toggleRow('child', this.id)">children / woman </a>|
         <a id="tElectric" class="toggle" onclick="toggleRow('electric', this.id)">electric usage </a>|
         <a id="tInternet" class="toggle" onclick="toggleRow('internet', this.id)">internet usage</a>
       </span>
     </div>
 
     <table id="worldData" class="tableWidth">
+      <col>
+      <col>
+      <col>
+      <col class="prio2">
+      <col class="prio2">
+      <col class="prio2 prio3">
+      <col class="prio2 prio3">
       <thead>
         <tr>
-          <th title="Field #1">ID</th>
-          <th title="Field #2">Country
+          <th>ID</th>
+          <th>Country
             <a onclick="sortTable(0)"><i class="fas fa-angle-up arrow"></i></a>
             <a onclick="sortTable(1)"><i class="fas fa-angle-down arrow"></i></a>
           </th>
-          <th class="birth" title="Field #3">birth rate / 1000</th>
-          <th class="cellphone" title="Field #4">cell phones / 100</th>
-          <th class="child" title="Field #5">children / woman</th>
-          <th class="electric" title="Field #6">electric usage</th>
-          <th class="internet" title="Field #10">internet usage</th>
+          <th class="birth">birth rate / 1000</th>
+          <th class="cellphone">cell phones / 100</th>
+          <th class="child">children / woman</th>
+          <th class="electric">electric usage</th>
+          <th class="internet">internet usage</th>
         </tr>
       </thead>
       <tbody>
