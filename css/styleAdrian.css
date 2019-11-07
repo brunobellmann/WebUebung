@@ -39,6 +39,10 @@ tr:nth-child(even) {
 .arrow {
     color: #70b544;
 }
+
+.arrow:hover {
+  color: #4a8321;
+}
   
 .displayTable {
     margin-top: 15px;
