@@ -18,6 +18,17 @@ td {
   padding: 5px;
 }
 
+.tableWidth > thead > tr > th,
+.tableWidth > tbody > tr > td {
+  width: calc(100%/8);
+}
+
+.tableWidth > thead > tr > th:first-child,
+.tableWidth > tbody > tr > td:first-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
 thead {
   border-bottom: 2px solid #cccccc;
 }
@@ -35,6 +46,19 @@ tr:nth-child(even) {background-color: #d8d8d8;}
 .toggle {
   text-decoration: underline;
   color: #d8d8d8;
+
+}
+
+.toggle:hover {
+  text-decoration: unset;
+}
+
+.toggleHead {
+  color: #a9aeb5;
+}
+
+.hideRow {
+  display: show;
 }
 
 /* @media only screen and (min-width: 1200px) {

@@ -32,22 +32,46 @@ function sortTable(dir) {
   }
 }
 
+function tableWidth(size) {
+  var table = document.getElementById('worldData')
+  switch (size) {
+    case 7:
+      table.classList.add('td7')
+      break
+    case 6:
+      table.classList.add('td7')
+      break
+    case 5:
+      table.classList.add('td7')
+      break
+    case 4:
+      table.classList.add('td7')
+      break
+    case 3:
+      table.classList.add('td7')
+      break
+    case 2:
+      table.classList.add('td7')
+      break
+  }
+}
+
 function toggleRow(cls, id) {
   var lst = document.getElementsByClassName(cls);
-  var value = document.getElementById(id).value
-  console.log(id)
-  console.log(this.value)
-  if (value==='show') {
-    for(var i = 0; i < lst.length; ++i) {
-      console.log(1)
-      lst[i].style.display = 'none';
-    }
-    document.getElementById(id).value = 'hide'
-  } else if (value==='hide') {
+  console.log(document.styleSheets)
+  var head = document.getElementById(id)
+
+  if (head.classList.contains('hideRow')) {
     for(var i = 0; i < lst.length; ++i) {
       lst[i].style.display = '';
+      document.getElementById(id).classList.remove('hideRow')
     }
-    document.getElementById(id).value = 'show'
+  } else {
+    for(var i = 0; i < lst.length; ++i) {
+      lst[i].style.display = 'none';
+      document.getElementById(id).classList.add('hideRow')
+    }
   }
-  
+  this.tableWidth(document.getElementById('worldData').rows[0].cells.length)
 }
+
