@@ -24,18 +24,14 @@
 
     <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <!-- <link rel="stylesheet" href="css/reset.css"> -->
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styleBasics.css">
     <link rel="stylesheet" href="css/styleBruno.css">
     <link rel="stylesheet" href="css/styleAdrian.css">
 
-    
+     <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script type="text/javascript" src="js/script.js"></script>
-    
-        <!-- SmoothScrolling -->
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/smooth-scrolling.js"></script>
 
     <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -50,9 +46,12 @@
 
   <!-- Navbar -->
   <div class="navWrapper">
+      
     <nav>
+      <i class="fas fa-bars" id="mobileNav"></i>
       <ul class="navList">
         <li class="navImg">
+          <img src="img/header.png" style="visibility: hidden;">
         </li>
         <li><i class="fas fa-list"></i> A1 - Table</li>
         <li><i class="fas fa-list"></i> A2 - Parse</li>
@@ -67,25 +66,28 @@
   <div class="container">
   
     <div class="textBox">
-                  <p>Mavericks reality distortion gradients attenuation. 
-                  Thougt through and through notifications transparency game center aluminum advanced desktop operating system genius bar. 
-                  This changes everything designed Dy Apple in California passbook. Control center photos all-new design SDK technology clock. 
-                  Simplicity is actually quite complicated. Functional layers 9:41am partly cloudy minimalism. Dock airdrop slide to answer music. 
-                  Video multitouch iTunes compass. Harmonious finder grid system retina animation compressor experience keynote. Redesign services API notes system preferences.
-                  Features siri flat buttons airplane mode calculator. 
-                  Missed call cover flow compare models. 
-                  Wi-Fi apple care volume reminder controls. 
-                  My stations folders mac power ultimate upgrade. 
-                  Shop online quicktime trackpad server aperture rumors education safari one to one. 
-                  Remote desktop
-                  motion business. 
-                  Backlit keyboard chess phone airport extreme support iPad. 
-                  Accessories magsafe terminal final cut pro. 
-                  Featured TV shows downloads digital color meter.
-                  Glossy tech specs bluetooth manuals. 
-                  OpenGL products FaceTime free shipping recycling mission control applications. from: jony_ipsum
-                </p>            
+      <span>
+        Mavericks reality distortion gradients attenuation. 
+        Thougt through and through notifications transparency game center aluminum advanced desktop operating system genius bar. 
+        This changes everything designed Dy Apple in California passbook. Control center photos all-new design SDK technology clock. 
+        Simplicity is actually quite complicated. Functional layers 9:41am partly cloudy minimalism. Dock airdrop slide to answer music. 
+        Video multitouch iTunes compass. Harmonious finder grid system retina animation compressor experience keynote. Redesign services API notes system preferences.
+        Features siri flat buttons airplane mode calculator. 
+        Missed call cover flow compare models. 
+        Wi-Fi apple care volume reminder controls. 
+        My stations folders mac power ultimate upgrade. 
+        Shop online quicktime trackpad server aperture rumors education safari one to one. 
+        Remote desktop
+        motion business. 
+        Backlit keyboard chess phone airport extreme support iPad. 
+        Accessories magsafe terminal final cut pro. 
+        Featured TV shows downloads digital color meter.
+        Glossy tech specs bluetooth manuals. 
+        OpenGL products FaceTime free shipping recycling mission control applications. 
+        from: <span id="from">jony_ipsum</span>   
+      </span>
     </div>
+  
 
     <div class="displayTable">
       <span class="toggleHead">
@@ -103,8 +105,8 @@
         <tr>
           <th title="Field #1">ID</th>
           <th title="Field #2">Country
-            <a onclick="sortTable(0)" href="#worldData"><i class="fas fa-angle-up arrow"></i></a>
-            <a onclick="sortTable(1)" href="#worldData"><i class="fas fa-angle-down arrow"></i></a>
+            <a onclick="sortTable(0)"><i class="fas fa-angle-up arrow"></i></a>
+            <a onclick="sortTable(1)"><i class="fas fa-angle-down arrow"></i></a>
           </th>
           <th class="birth" title="Field #3">birth rate / 1000</th>
           <th class="cellphone" title="Field #4">cell phones / 100</th>

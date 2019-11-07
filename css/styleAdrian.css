@@ -1,76 +1,72 @@
 /* CSS Adrian */
-
-/* Desktop Styles */
-
+/* Mobile Styles */
+    
 table {
-  border-collapse: collapse;
-  width: 1170px;
-  margin-top: 15px;
+    border-collapse: collapse;
+    width: auto;
+    margin-top: 15px;
 }
-
+  
 tr {
-  text-align: left;
+    text-align: left;
 }
-
+  
 td {
-  text-align: left;
-  height: 30px;
-  padding: 5px;
+    text-align: left;
+    height: auto;
+    padding: 10px 0px 10px 0px;
 }
-
+  
 .tableWidth > thead > tr > th,
 .tableWidth > tbody > tr > td {
-  width: calc(100%/8);
+    width: calc(100%/8);
 }
-
+  
 .tableWidth > thead > tr > th:first-child,
 .tableWidth > tbody > tr > td:first-child {
   width: 1%;
   white-space: nowrap;
 }
-
+  
 thead {
   border-bottom: 2px solid #cccccc;
 }
-
-tr:nth-child(even) {background-color: #d8d8d8;}
-
+  
+tr:nth-child(even) {
+  background-color: #d8d8d8;
+}
+  
 .arrow {
-  color: #70b544;
+    color: #70b544;
 }
-
+  
 .displayTable {
-  margin-top: 15px;
+    margin-top: 15px;
 }
-
+  
 .toggle {
-  text-decoration: underline;
-  color: #d8d8d8;
-
+    text-decoration: underline;
+    color: #d8d8d8;
+  
 }
-
+  
 .toggle:hover {
-  text-decoration: unset;
+    text-decoration: unset;
 }
-
+  
 .toggleHead {
-  color: #a9aeb5;
+    color: #a9aeb5;
 }
-
+  
 .hideRow {
-  display: show;
+    display: show;
 }
 
-/* @media only screen and (min-width: 1200px) {
+/* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
     
-  }
+}
   
-  /* Tablet Styles 
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    
-  }
-  
-  /* Mobile Styles 
-  @media only screen and (min-width: 320px) and (max-width: 768px) {
-    
-  } */
+/* Desktop Styles */
+@media only screen and (min-width: 1200px) {
+} 

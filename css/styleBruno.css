@@ -1,6 +1,4 @@
 /* CSS Bruno */
-
-
 .textBox {
     width: auto;
     border-radius: 0 0 5px 5px;
@@ -10,14 +8,24 @@
     border-bottom: 1px solid #e2e2e2;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
     padding: 2%;
-    margin: 2%;
     margin-top: 15px;
 }
+
+#from {
+    color: #92c792;
+    text-decoration: underline;
+}
+
+#from:hover {
+    color: #4a8321;
+    text-decoration: none;
+} 
 
 /* Desktop Styles */
 @media only screen and (min-width: 1200px) {
     .textBox {
         width: auto;
+        column-count: 3;
         border-radius: 0 0 5px 5px;
         border-top: 1px solid #9fb990;
         border-left: 1px solid #e2e2e2;
@@ -25,9 +33,8 @@
         border-bottom: 1px solid #e2e2e2;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
         padding: 15px;
-        margin: 0 auto;
+        margin: 0px;
         margin-top: 15px;
-        padding: 2%;
     }
 }
 
@@ -35,7 +42,7 @@
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
     .textBox {
         width: auto;
-        column-width: 1170px/4;
+        column-count: 2;
         border-radius: 0 0 5px 5px;
         border-top: 1px solid #9fb990;
         border-left: 1px solid #e2e2e2;
@@ -43,6 +50,10 @@
         border-bottom: 1px solid #e2e2e2;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
         margin-top: 15px;
+    }
+
+    .textBox > p {
+        column-width: calc(100%/3);
     }
 }
 
