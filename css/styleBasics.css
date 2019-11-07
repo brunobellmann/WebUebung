@@ -1,5 +1,4 @@
-/* Desktop Styles 
-@media only screen and (min-width: 321px) { */
+/* Mobile */
 
     div { -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden; 
@@ -9,6 +8,7 @@
 
     html, body {
         height: 100%;
+        width: auto;
         font-family: 'Roboto', sans-serif;
         font-size: 14px;
         line-height: 145%;
@@ -16,42 +16,46 @@
         margin: 0 auto;
     }
 
-    nav {
+    .container {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+
+    .navWrapper {
+        position: relative;
+        display: block;
+        margin: 0 auto;
         width: 100%;
+        background-image: linear-gradient(to top, #efefef 0%, #d1d1d1 60%);
+        border-bottom: 1px solid #dbdbdb;
+        height: auto;
+    }
+
+    nav {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
     }
 
     nav ul {
-        background-image: linear-gradient(to top, #efefef 0%, #d1d1d1 60%);
-        border-bottom: 1px solid #dbdbdb;
-        height: 80px;
-        margin-top: 0px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 !important;
+        display: flex;
     }
 
-    .navList li{
-        float: left;
+    .navList li {
+        width: 16.6%;
         list-style-type: none;
         text-align: center;
-        display: list-item;
-        padding: 30px 10px 30px 10px;
+        padding: 1em 0.7em 1em 0.7em;
+        display: inline-block;
     }
-    .navImg {
-        background-image: url("../img/header.png");
-        background-position: 0px 80px;
-        z-index: 0;
-        float: left;
-        height: 80px;
-        width: 150px;
-        padding: 0px !important;
-    }
-
-    .navImg:hover {
-        background-position: 0px 0px;
-    } 
 
     .navList li:first-child {
-        margin-left:100px;
-        margin-right: 10px;
-        height: 80px;
+        display: none;
     }
 
     .navList li:nth-child(even) {
@@ -59,38 +63,78 @@
         border-right: 1px solid #dbdbdb;
     }
 
-    .navList li:last-child {
-        border-right: 1px solid #dbdbdb;
-    }
-
     .footer {
         bottom: 0;
-        width: 100%;
+        width: auto;
         border-top: 1px solid #7da06a;
         font-size: 12px;
         margin-top: 50px;
+        padding: 2%;
+        display: flex;
     }
     
     .footerLeft {
         float: left;
         text-align: left;
+        width: 50%;
     }
     
     .footerRight {
         float: right;
         text-align: right;
+        width: 50%;
     }
+
     
+    
+  
+  /* Tablet Styles */
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+
+  }
+  /* Desktop Styles */
+  @media only screen and (min-width: 1200px) {
     .container {
         width: 1170px !important;
         margin: 0 auto;
     }
-  
-  
-  /* Tablet Styles 
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
 
-  
-  /* Mobile Styles 
-  @media only screen and (min-width: 320px) and (max-width: 768px) {
-  } */
+    nav {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 80px;
+        max-width: 1170px;
+    }
+
+    .navImg {
+        background-image: url("../img/header.png");
+        background-position: 0px 80px;
+        z-index: 0;
+        height: 80px;
+        width: 150px;
+        padding: 0px !important;
+    }
+
+    .navList li {
+        list-style-type: none;
+        text-align: center;
+        padding: 30px 10px 30px 10px;
+        display: inline-block;
+    }
+
+    .navImg:hover {
+        background-position: 0px 0px;
+    } 
+
+    .navList li:first-child {
+        margin-right: 10px;
+        height: 80px;
+        display: inline-block;
+    }
+  }
