@@ -32,46 +32,75 @@ function sortTable(dir) {
   }
 }
 
-function tableWidth(size) {
-  var table = document.getElementById('worldData')
-  switch (size) {
-    case 7:
-      table.classList.add('td7')
-      break
-    case 6:
-      table.classList.add('td7')
-      break
-    case 5:
-      table.classList.add('td7')
-      break
-    case 4:
-      table.classList.add('td7')
-      break
-    case 3:
-      table.classList.add('td7')
-      break
-    case 2:
-      table.classList.add('td7')
-      break
-  }
-}
-
 function toggleRow(cls, id) {
   var lst = document.getElementsByClassName(cls);
-  console.log(document.styleSheets)
   var head = document.getElementById(id)
-
-  if (head.classList.contains('hideRow')) {
-    for(var i = 0; i < lst.length; ++i) {
-      lst[i].style.display = '';
-      document.getElementById(id).classList.remove('hideRow')
-    }
-  } else {
-    for(var i = 0; i < lst.length; ++i) {
-      lst[i].style.display = 'none';
-      document.getElementById(id).classList.add('hideRow')
+  if (!head.classList.contains('disabled')) {
+    if (head.classList.contains('hideRow')) {
+      for(var i = 0; i < lst.length; ++i) {
+        lst[i].style.display = '';
+        document.getElementById(id).classList.remove('hideRow')
+      }
+    } else {
+      for(var i = 0; i < lst.length; ++i) {
+        lst[i].style.display = 'none';
+        document.getElementById(id).classList.add('hideRow')
+      }
     }
   }
-  this.tableWidth(document.getElementById('worldData').rows[0].cells.length)
 }
+
+window.onload = function() {
+  var mq = window.matchMedia( "(min-width: 767px) and (max-width: 1199px)" );
+  var mq2 = window.matchMedia( "(min-width: 1199px)" );
+  
+  if (!mq.matches && !mq2.matches) {
+    var cls = ['cellphone', 'child', 'electric', 'internet']
+    var ids = ['tCellphone', 'tChild', 'tElectric', 'tInternet']
+    
+    for(var j = 0; j < ids.length; j++) {
+      var head = document.getElementById(ids[j])
+      head.classList.add('disabled')
+    }  
+
+    for(var j = 0; j < cls.length; j++) {
+      var cols = document.getElementsByClassName(cls[j])
+      for(var i = 0; i < cols.length; ++i) {
+        cols[i].style.display = 'none';
+      }
+    }  
+  } else if (!mq2.matches && mq.matches) {
+    var cls = ['electric', 'internet']
+    var ids = ['tElectric', 'tInternet']
+
+    for(var j = 0; j < ids.length; j++) {
+      var head = document.getElementById(ids[j])
+      head.classList.add('disabled')
+    }  
+
+    for(var j = 0; j < cls.length; j++) {
+      var cols = document.getElementsByClassName(cls[j])
+      for(var i = 0; i < cols.length; ++i) {
+        cols[i].style.display = 'none';
+      }
+    }  
+  } else {
+    var cls = ['cellphone', 'child', 'electric', 'internet']
+    var ids = ['tCellphone', 'tChild', 'tElectric', 'tInternet']
+    
+    for(var j = 0; j < ids.length; j++) {
+      var head = document.getElementById(ids[j])
+      head.classList.remove('disabled')
+    }  
+
+    for(var j = 0; j < cls.length; j++) {
+      var cols = document.getElementsByClassName(cls[j])
+      for(var i = 0; i < cols.length; ++i) {
+        cols[i].style.display = '';
+      }
+    }
+  }
+}
+
+
 

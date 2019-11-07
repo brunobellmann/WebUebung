@@ -5,6 +5,11 @@ table {
     border-collapse: collapse;
     width: auto;
     margin-top: 15px;
+    table-layout: fixed;
+}
+
+title, description, author, keywords {
+  display: none;
 }
   
 tr {
@@ -14,7 +19,7 @@ tr {
 td {
     text-align: left;
     height: auto;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 15px 10px 0px;
 }
   
 .tableWidth > thead > tr > th,
@@ -66,11 +71,55 @@ tr:nth-child(even) {
     display: show;
 }
 
+.disabled {
+  display: hide;
+}
+
 /* Tablet Styles */
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    
+  .tableWidth > thead > tr > th,
+  .tableWidth > tbody > tr > td {
+    width: calc(100%/8);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: auto;
+    margin-top: 15px;
+  }
+  
+  tr {
+      text-align: left;
+  }
+  
+  td {
+      text-align: left;
+      height: auto;
+      padding: 10px 15px 10px 0px;
+  }
 }
   
 /* Desktop Styles */
 @media only screen and (min-width: 1200px) {
-} 
+  .tableWidth > thead > tr > th,
+  .tableWidth > tbody > tr > td {
+    width: calc(100%/8);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: auto;
+    margin-top: 15px;
+    table-layout: fixed;
+  }
+  
+  tr {
+      text-align: left;
+  }
+  
+  td {
+      text-align: left;
+      height: auto;
+      padding: 10px 15px 10px 0px;
+  }
+}
