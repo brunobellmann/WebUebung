@@ -1,9 +1,12 @@
 /* Mobile */
-
     div { -webkit-backface-visibility: hidden;
         -moz-backface-visibility: hidden; 
         -ms-backface-visibility: hidden; 
         backface-visibility: hidden; 
+    }
+
+    title, description, author, keywords {
+        display: none;
     }
 
     html, body {
@@ -14,6 +17,12 @@
         line-height: 145%;
         font-style: normal;
         margin: 0 auto;
+    }
+    h1 {
+        font-size: 35px;
+        font-weight: 300;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .container {
@@ -27,8 +36,10 @@
         margin: 0 auto;
         width: 100%;
         background-image: linear-gradient(to top, #efefef 0%, #d1d1d1 60%);
-        border-bottom: 1px solid #dbdbdb;
+        background-repeat: no-repeat;
         height: auto;
+        background-size: 100% 80px;
+        
     }
 
     nav {
@@ -36,23 +47,31 @@
         display: block;
         margin: 0 auto;
         width: 100%;
+        height: 100%;
+    }
+
+    .navList li{
+        padding: 10px;
+        height: auto;
+        color: #575756;
+        display: block;
+    }
+
+    .mobileNav {
+        background-image: url("../img/header.png");
+        background-repeat: no-repeat;
         height: 80px;
+        border-bottom: 1px solid #dbdbdb;
     }
 
-    nav ul {
-        margin: 0 auto;
-        width: 100%;
-        padding: 0 !important;
-        display: flex;
+    #mobileNav {
+        padding-top: 10px;
+        padding-right: 10px;
+        float: right;
     }
 
-    .navList li {
-        width: 16.6%;
-        list-style-type: none;
-        text-align: center;
-        padding: 1em 0.7em 1em 0.7em;
-        display: inline-block;
-        display: none;
+    .navImg {
+        display: none !important;
     }
 
     .footer {
@@ -76,18 +95,19 @@
         text-align: right;
         width: 50%;
     }
-    
-    #mobileNav {
-        float: right;
-    }
 
+@media only screen and (max-width: 768px) {
+        .navList li:hover{
+            background-color: #cccccc;
+            color: black;
+        }
+    }    
   /* Tablet Styles */
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
     .container {
         width: 100% !important;
         margin: 0 auto;
     }
-
   }
   /* Desktop Styles */
   @media only screen and (min-width: 1200px) {
@@ -98,6 +118,14 @@
 
     #mobileNav {
         display: none;
+    }
+    
+    .mobileNav {
+        display: none;
+    }
+
+    .navWrapper {
+        border-bottom: 1px solid #dbdbdb;
     }
 
     nav {
@@ -110,13 +138,22 @@
     }
 
     .navImg {
+        display: inline-block !important;
         background-image: url("../img/header.png");
         background-position: 0px 0px;
+        background-repeat: no-repeat;
         z-index: 0;
         height: 80px;
         width: 150px;
         padding: 0px !important;
         min-width: auto;
+    }
+
+    nav ul {
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 !important;
+        display: flex;
     }
 
     .navList li {
@@ -125,10 +162,11 @@
         text-align: center;
         padding: 30px 10px 30px 10px;
         display: inline-block;
+        color: black;
     }
 
     .navList li:not(:first-child):hover {
-        background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%);
+        background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%) !important;
     }
 
     .navList li:nth-child(even) {
@@ -141,11 +179,11 @@
     }
 
     .navImg:hover {
-        background-position: 0px 80px;
+        background-position: 0px -80px;
     }
 
     .navList li:first-child {
-        margin-right: 10px;
+        padding-right: 50px !important;
         height: 80px;
         display: inline-block;
     }
