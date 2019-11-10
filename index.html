@@ -47,7 +47,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <!-- Navbar -->
-  <div class="navWrapper">
+  <div class="navWrapper" id="navWrapper">
     <nav>
         <div class="mobileNav">
             <img src="img/header.png" style="visibility: hidden;">
@@ -97,11 +97,11 @@
     <div class="displayTable">
       <span class="toggleHead">
         Show/Hide:&nbsp;
-        <a id="tBirth" class="toggle" onclick="toggleRow('birth', this.id)">birth rate </a>|
-        <a id="tCellphone" class="toggle" onclick="toggleRow('cellphone', this.id)">cellphones </a>|
-        <a id="tChild" class="toggle" onclick="toggleRow('child', this.id)">children / woman </a>|
-        <a id="tElectric" class="toggle" onclick="toggleRow('electric', this.id)">electric usage </a>|
-        <a id="tInternet" class="toggle" onclick="toggleRow('internet', this.id)">internet usage</a>
+        <a id="tBirth" class="toggle" onclick="toggleColumn('birth', this.id)">birth rate </a>|
+        <a id="tCellphone" class="toggle" onclick="toggleColumn('cellphone', this.id)">cellphones </a>|
+        <a id="tChild" class="toggle" onclick="toggleColumn('child', this.id)">children / woman </a>|
+        <a id="tElectric" class="toggle" onclick="toggleColumn('electric', this.id)">electric usage </a>|
+        <a id="tInternet" class="toggle" onclick="toggleColumn('internet', this.id)">internet usage</a>
       </span>
     </div>
 
@@ -359,13 +359,13 @@
     <div class="displayTable">
       <span class="toggleHead">
         Show/Hide:&nbsp;
-        <a id="tBirth" class="toggle" onclick="toggleRow('birth', this.id)">birth rate </a>|
-        <a id="tCellphone" class="toggle" onclick="toggleRow('cellphone', this.id)">cellphones </a>|
-        <a id="tchild" class="toggle" onclick="toggleRow('child', this.id)">children / woman </a>|
-        <a id="tElectric" class="toggle" onclick="toggleRow('electric', this.id)">electric usage </a>|
-        <a id="tInternet" class="toggle" onclick="toggleRow('internet', this.id)">internet usage</a>
+        <a id="tBirth" class="toggle" onclick="toggleColumn('birth', this.id)">birth rate </a>|
+        <a id="tCellphone" class="toggle" onclick="toggleColumn('cellphone', this.id)">cellphones </a>|
+        <a id="tchild" class="toggle" onclick="toggleColumn('child', this.id)">children / woman </a>|
+        <a id="tElectric" class="toggle" onclick="toggleColumn('electric', this.id)">electric usage </a>|
+        <a id="tInternet" class="toggle" onclick="toggleColumn('internet', this.id)">internet usage</a>
       </span>
-      </div>
+    </div>
 
     <!-- Footer -->
     <div class="footer">

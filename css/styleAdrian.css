@@ -1,6 +1,5 @@
 /* CSS Adrian */
-/* Mobile Styles */
-    
+/* Mobile Styles */  
 table {
     border-collapse: collapse;
     width: auto;
@@ -67,7 +66,7 @@ tr:nth-child(even) {
     color: #a9aeb5;
 }
   
-.hideRow {
+.hideColumn {
     display: show;
 }
 

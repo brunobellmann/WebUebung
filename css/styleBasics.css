@@ -108,13 +108,6 @@
         width: 100% !important;
         margin: 0 auto;
     }
-  }
-  /* Desktop Styles */
-  @media only screen and (min-width: 1200px) {
-    .container {
-        width: 1170px !important;
-        margin: 0 auto;
-    }
 
     #mobileNav {
         display: none;
@@ -186,6 +179,99 @@
         padding-right: 50px !important;
         height: 80px;
         display: inline-block;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%
+    }
+  }
+  /* Desktop Styles */
+  @media only screen and (min-width: 1200px) {
+    .container {
+        width: 1170px !important;
+        margin: 0 auto;
+    }
+
+    #mobileNav {
+        display: none;
+    }
+    
+    .mobileNav {
+        display: none;
+    }
+
+    .navWrapper {
+        border-bottom: 1px solid #dbdbdb;
+    }
+
+    nav {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 80px;
+        max-width: 1170px;
+    }
+
+    .navImg {
+        display: inline-block !important;
+        background-image: url("../img/header.png");
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
+        z-index: 0;
+        height: 80px;
+        width: 150px;
+        padding: 0px !important;
+        min-width: auto;
+    }
+
+    nav ul {
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 !important;
+        display: flex;
+    }
+
+    .navList li {
+        list-style-type: none;
+        width: auto;
+        text-align: center;
+        padding: 30px 10px 30px 10px;
+        display: inline-block;
+        color: black;
+    }
+
+    .navList li:not(:first-child):hover {
+        background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%) !important;
+        transition: background-image 2s ease-in-out;
+    }
+    
+
+    .navList li:nth-child(even) {
+        border-left: 1px solid #dbdbdb;
+        border-right: 1px solid #dbdbdb;
+    }
+
+    .navList li:last-child {
+        border-right: 1px solid #dbdbdb;
+    }
+
+    .navImg:hover {
+        background-position: 0px -80px;
+    }
+
+    .navList li:first-child {
+        padding-right: 50px !important;
+        height: 80px;
+        display: inline-block;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%
     }
 
     .footer {
