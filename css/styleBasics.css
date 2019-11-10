@@ -156,10 +156,28 @@
         padding: 30px 10px 30px 10px;
         display: inline-block;
         color: black;
+        z-index: 1;
+        position: relative;
     }
 
-    .navList li:not(:first-child):hover {
-        background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%) !important;
+    .navList li:not(:first-child) .bg {
+            background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%) !important;
+            opacity: 0;
+            -webkit-transition: opacity .5s linear;
+            -moz-transition: opacity .5s linear;
+            -ms-transition: opacity .5s linear;
+            -o-transition: opacity .5s linear;
+            transition: opacity .5s linear;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            top: 0;
+    }
+    
+    .navList li:not(:first-child):hover .bg {
+            opacity: 1;
     }
 
     .navList li:nth-child(even) {
@@ -226,6 +244,26 @@
         padding: 0px !important;
         min-width: auto;
     }
+
+    .navList li:not(:first-child) .bg {
+        background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%) !important;
+        opacity: 0;
+        -webkit-transition: opacity .5s linear;
+        -moz-transition: opacity .5s linear;
+        -ms-transition: opacity .5s linear;
+        -o-transition: opacity .5s linear;
+        transition: opacity .5s linear;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+}
+
+.navList li:not(:first-child):hover .bg {
+        opacity: 1;
+}
 
     nav ul {
         margin: 0 auto;
