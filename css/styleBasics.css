@@ -1,10 +1,4 @@
 /* Mobile */
-div {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
 
 title,
 description,
@@ -253,6 +247,24 @@ nav {
         min-width: auto;
     }
 
+    nav ul {
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 !important;
+        display: flex;
+    }
+
+    .navList li {
+        list-style-type: none;
+        width: auto;
+        text-align: center;
+        padding: 30px 10px 30px 10px;
+        display: inline-block;
+        color: black;
+        z-index: 1;
+        position: relative;
+    }
+
     .navList li:not(:first-child) .bg {
         background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%) !important;
         opacity: 0;
@@ -272,28 +284,6 @@ nav {
     .navList li:not(:first-child):hover .bg {
         opacity: 1;
     }
-
-    nav ul {
-        margin: 0 auto;
-        width: 100%;
-        padding: 0 !important;
-        display: flex;
-    }
-
-    .navList li {
-        list-style-type: none;
-        width: auto;
-        text-align: center;
-        padding: 30px 10px 30px 10px;
-        display: inline-block;
-        color: black;
-    }
-
-    .navList li:not(:first-child):hover {
-        background-image: linear-gradient(to top, #d6d6d6 0%, #d1d1d1 60%) !important;
-        transition: background-image 2s ease-in-out;
-    }
-
 
     .navList li:nth-child(even) {
         border-left: 1px solid #dbdbdb;
