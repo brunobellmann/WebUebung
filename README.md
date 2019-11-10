@@ -7,4 +7,4 @@ Anmerkungen zur Website:
 - Tabelle Responsive Design nur bei Aktualisierung der Seite nach dem Ändern der Bildschirmgröße
 - Beim automatischen Ausblenden der Spalten durch kleinere Größe, sind diese nicht mehr einblendbar durch click auf show/hide (Ansatz aus screen nicht ersichtlich
 )
-- kein responsive Design für Header/Navbar
+- Header/Navbar nicht ein- bzw. Ausklappbar
