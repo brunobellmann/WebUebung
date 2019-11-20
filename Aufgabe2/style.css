@@ -266,6 +266,7 @@ footer > .container > div.right {
         text-indent: 25px;
     }
 }*/
+
 @media only screen and (max-width : 815px) {
 	div.container section {
 		margin-top: 0px;
