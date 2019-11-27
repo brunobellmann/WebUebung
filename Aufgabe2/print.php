@@ -12,7 +12,7 @@
 
             <head>
                 <meta charset="UTF-8">
-                <title>Team 18</title>
+                <title>World Data | Team 18</title>
                 <meta name="description" content="FIXME">
                 <meta name="author" content="FIXME">
                 <meta name="keywords" content="FIXME">
