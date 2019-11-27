@@ -1,5 +1,4 @@
 <?php
-
 // PHP file for basic class with main functions
 class WorldDataParser {
     
@@ -71,9 +70,22 @@ class WorldDataParser {
     }
 
     function printXML(string $xmlpath, string $xsltpath) {
-        $xmldata = simplexml_load_file($xmlpath) or die("Failed to load");
-        return $xmldata->employee[0]->firstname;
-    }
         
+        //create XSLTProcessor
+        $proc = new XSLTProcessor();
+
+        // load XML
+        $xml = new DOMDocument(); 
+        $xml->load($xmlpath);
+
+        // load XSL
+        $xsl = new DOMDocument();
+        $xsl->load($xsltpath);
+
+        //setting XSL Stylesheet in Processor
+        $proc->importStylesheet($xsl);
+        $HTMLString = $proc->transformToXML($xml);
+        return $HTMLString;
+    } 
 }
 ?>
