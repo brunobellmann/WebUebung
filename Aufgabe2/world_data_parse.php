@@ -53,20 +53,20 @@ class WorldDataParser {
                     $subnode = $xml->addChild($key);
                     array_to_xml($value, $subnode);
                 } else {
-                    $xml->addChild($key, $value);
+                    $xml->addChild($key, str_replace(' ', '', $value));
                 }
             }        
         }
-
         array_to_xml($data, $xml);
-        
-        $file = "world_data.xml";
-        $domxml = new DOMDocument('1.0');
-        $domxml->preserveWhiteSpace = false;
-        $domxml->formatOutput = true;
-        $domxml->loadXML($xml->asXML());
 
-        return $domxml->save($file);
+        $file = "world_data.xml";
+        $xml->asXML($file);
+        $sXML = simplexml_load_file($file, null, LIBXML_NOBLANKS);
+
+        $domDocument = dom_import_simplexml($sXML)->ownerDocument;
+        $domDocument->formatOutput = true;
+
+        return $domDocument->save($file);
     }
 
     function printXML(string $xmlpath, string $xsltpath) {
@@ -77,6 +77,10 @@ class WorldDataParser {
         // load XML
         $xml = new DOMDocument(); 
         $xml->load($xmlpath);
+        
+        /* $xml = simplexml_load_file($xmlpath, null, LIBXML_NOBLANKS);
+        echo $xml; */
+        //$xml = $xml->asXML();
 
         // load XSL
         $xsl = new DOMDocument();
