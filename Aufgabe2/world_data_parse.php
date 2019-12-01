@@ -4,6 +4,7 @@ class WorldDataParser {
     
     function parseCSV(string $path) {
         $arr = array_map('str_getcsv', file($path));
+        //remove header
         $removed = array_shift($arr);
         
         // rename keys
@@ -43,7 +44,7 @@ class WorldDataParser {
 
     function saveXML(array $data) {
         $xml = new SimpleXMLElement('<Countries/>');
-
+        // build xml tree
         function array_to_xml($array, &$xml) {        
             foreach($array as $key => $value) {               
                 if(is_array($value)) {            
@@ -59,11 +60,13 @@ class WorldDataParser {
         }
         array_to_xml($data, $xml);
 
+        // save file and do some formats
         $file = "world_data.xml";
         $xml->asXML($file);
         $sXML = simplexml_load_file($file, null, LIBXML_NOBLANKS);
 
         $domDocument = dom_import_simplexml($sXML)->ownerDocument;
+        $domDocument->encoding = 'utf-8';
         $domDocument->formatOutput = true;
 
         return $domDocument->save($file);
@@ -77,10 +80,6 @@ class WorldDataParser {
         // load XML
         $xml = new DOMDocument(); 
         $xml->load($xmlpath);
-        
-        /* $xml = simplexml_load_file($xmlpath, null, LIBXML_NOBLANKS);
-        echo $xml; */
-        //$xml = $xml->asXML();
 
         // load XSL
         $xsl = new DOMDocument();
