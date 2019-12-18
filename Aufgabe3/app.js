@@ -94,7 +94,17 @@ app.get('/properties', (req, res) => {
 //returning property with number num
 app.get('/properties/:num', (req, res) => {
     var num = req.params.num;
-    return res.send('No such property value'); //if num not exist
+    var props = new Array();
+    if (json.length) {
+        for (var key in json[0]) {
+            props.push(key);
+        }
+    }
+    if (props.length - 1 >= parseInt(num) && parseInt(num) >= 0) {
+        return res.send(props[num]);
+    } else {
+        return res.send('No such property value'); //if num not exist
+    }
 });
 
 //POST
@@ -110,7 +120,7 @@ app.post('/items', (req, res) => {
         ids.push(json[i].id);
     }
     ids.sort();
-    
+
     var id = parseInt(ids[ids.length - 1], 10) + 1;
     var obj = {
         'name': name,
