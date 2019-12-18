@@ -47,43 +47,99 @@ app.get('/items/', (req, res) => {
 
 //returning country to requested id with all properties
 app.get('/items/:id', (req, res) => {
-    //console log falls man testen will ob der payload mitkommt
-    //console.log(req.params.id);
-    return res.send(JSON.stringify(json));
-    return res.send('No such id ' + req.params.id + ' in database'); //if no id
+    for (var i = 0; i < json.length; i++) {
+        if (json[i].id === req.params.id) {
+            return res.send(json[i]);
+        }
+    }
+    return res.send('No such id ' + req.params.id + ' in database');
 });
 
 // returning all countries between id1 and id2
 app.get('/items/:id1/:id2', (req, res) => {
-    return res.send('Range not possible'); //if Range not exists
+    var arr = new Array();
+    var ids = new Array();
+    var id1 = req.params.id1;
+    var id2 = req.params.id2;
+    // collect ids vor id range check
+    for (var i = 0; i < json.length; i++) {
+        ids.push(json[i].id);
+    }
+    ids.sort()
+    // check valid range
+    if (ids[0] > id1 || ids[ids.length - 1] < id2 || id1 > id2) {
+        return res.send('Range not possible'); //if Range not exists
+    }
+    // collect items in range
+    for (var i = 0; i < json.length; i++) {
+        if (json[i].id >= id1 && json[i].id <= id2) {
+            arr.push(json[i]);
+        }
+    }
+    return res.send(arr);
 });
 
 //PROPERTIES
 //returning all properties
 app.get('/properties', (req, res) => {
-    //return res.send('Recieved something'); //keine message beschrieben
+    var props = new Array();
+    if (json.length) {
+        for (var key in json[0]) {
+            props.push(key);
+        }
+    }
+    return res.send(props);
 });
 
 //returning property with number num
 app.get('/properties/:num', (req, res) => {
+    var num = req.params.num;
     return res.send('No such property value'); //if num not exist
 });
 
 //POST
 //Items
 app.post('/items', (req, res) => {
-    return res.send('Added country {name} to list'); //name musst du austauschen
+    var name = req.query.name;
+    var birthrate = req.query.birthrate;
+    var cellphones = req.query.cellphones;
+
+    var ids = new Array();
+    // collect ids
+    for (var i = 0; i < json.length; i++) {
+        ids.push(json[i].id);
+    }
+    ids.sort();
+    
+    var id = parseInt(ids[ids.length - 1], 10) + 1;
+    var obj = {
+        'name': name,
+        'id': id.toString().length < 2 ? "00" + id.toString() : "0" + id.toString(),
+        'birth_rate_per_1000': birthrate,
+        'cell_phones_per_100': cellphones,
+    }
+    // add to list
+    json.push(obj);
+    return res.send('Added country ' + name + ' to list'); //name musst du austauschen
 });
 
 //DELETE
 //delete last record from list
-app.delete('items', (req, res) => {
-    return res.send('Deleted last country: {name}!'); //name musst du noch austauschen
+app.delete('/items', (req, res) => {
+    var last_ele = json.pop();
+    return res.send('Deleted last country: ' + last_ele.name + '!'); //name musst du noch austauschen
 });
 
 //delete country with id
-app.delete('items/:id', (req, res) => {
-    return res.send('Item ' + req.paramas.id + 'deleted successfully.'); //success
+app.delete('/items/:id', (req, res) => {
+    for (var i = 0; i < json.length; i++) {
+        if (json[i].id === req.params.id) {
+            var id = json[i].id;
+            // delete item at index 
+            json.splice(i, 1);
+            return res.send('Item ' + id + ' deleted successfully.'); //success
+        }
+    }
     return res.send('No such id ' + req.params.id + ' in database'); //no success
 });
 
