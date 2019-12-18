@@ -23,13 +23,12 @@ app.use( express.static( path.join(__dirname, "public") ) );
 // var for Parse and JSONObject
 var csvParser = new Converter({});
 var csvPath = "world_data.csv";
-var json = new Array();
+var json;
 
 csvParser
 .fromFile(csvPath)
 .then((jsonObject)=>{
     json = jsonObject;
-    //console.log(json);
 })
 
 /** unser beiden Aufgabe @Adrian   */
@@ -42,13 +41,15 @@ csvParser
 //ITEMS
 //returning all items from JSON
 app.get('/items/', (req, res) => {
-    return res.send('Received something');
+    //falls du testen willst ob die json wirklich ankommt -> /items
+    return res.send(JSON.stringify(json));
 });
 
 //returning country to requested id with all properties
 app.get('/items/:id', (req, res) => {
     //console log falls man testen will ob der payload mitkommt
     //console.log(req.params.id);
+    return res.send(JSON.stringify(json));
     return res.send('No such id ' + req.params.id + ' in database'); //if no id
 });
 
