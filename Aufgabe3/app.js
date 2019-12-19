@@ -15,7 +15,6 @@ app.use( express.static( path.join(__dirname, "public") ) );
 
 // END DO NOT CHANGE!
 
-/** Brunos Aufgabe */
 /**************************************************************************
 ****************************** csv2json *********************************
 **************************************************************************/
@@ -31,7 +30,6 @@ csvParser
     json = jsonObject;
 })
 
-/** unser beiden Aufgabe @Adrian   */
 /**************************************************************************
 ********************** handle HTTP METHODS ***********************
 **************************************************************************/
@@ -41,8 +39,7 @@ csvParser
 //ITEMS
 //returning all items from JSON
 app.get('/items/', (req, res) => {
-    //falls du testen willst ob die json wirklich ankommt -> /items
-    return res.send(JSON.stringify(json));
+    return res.send(json);
 });
 
 //returning country to requested id with all properties
@@ -84,6 +81,7 @@ app.get('/items/:id1/:id2', (req, res) => {
 app.get('/properties', (req, res) => {
     var props = new Array();
     if (json.length) {
+        // collect all properties from one item
         for (var key in json[0]) {
             props.push(key);
         }
@@ -95,11 +93,13 @@ app.get('/properties', (req, res) => {
 app.get('/properties/:num', (req, res) => {
     var num = req.params.num;
     var props = new Array();
+    // collect props
     if (json.length) {
         for (var key in json[0]) {
             props.push(key);
         }
     }
+    // check prop num in range or not
     if (props.length - 1 >= parseInt(num) && parseInt(num) >= 0) {
         return res.send(props[num]);
     } else {
@@ -120,8 +120,9 @@ app.post('/items', (req, res) => {
         ids.push(json[i].id);
     }
     ids.sort();
-
+    // increment highest id in list
     var id = parseInt(ids[ids.length - 1], 10) + 1;
+    // build object
     var obj = {
         'name': name,
         'id': id.toString().length < 2 ? "00" + id.toString() : "0" + id.toString(),
@@ -130,14 +131,20 @@ app.post('/items', (req, res) => {
     }
     // add to list
     json.push(obj);
-    return res.send('Added country ' + name + ' to list'); //name musst du austauschen
+    return res.send('Added country ' + name + ' to list');
 });
 
 //DELETE
 //delete last record from list
 app.delete('/items', (req, res) => {
-    var last_ele = json.pop();
-    return res.send('Deleted last country: ' + last_ele.name + '!'); //name musst du noch austauschen
+    // delete if theres something to delete
+    if (json.length) {
+        var last_ele = json.pop();
+        return res.send('Deleted last country: ' + last_ele.name + '!');
+    } else {
+        return res.send('No items to delete!');
+    }
+    
 });
 
 //delete country with id
