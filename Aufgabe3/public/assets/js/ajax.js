@@ -63,7 +63,7 @@ $("#country_filter").submit(function(e) {
                 //var vervollständigen und unten den td string anpassen
                 table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
             } else {
-                //call /items
+                //call /items??
             }
         }, error: function(jqXHR, text, err) {
         // Handle error if occured
