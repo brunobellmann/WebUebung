@@ -152,7 +152,7 @@ app.delete('/items/:id', (req, res) => {
     for (var i = 0; i < json.length; i++) {
         if (json[i].id === req.params.id) {
             var id = json[i].id;
-            // delete item at index 
+            // delete item at index
             json.splice(i, 1);
             return res.send('Item ' + id + ' deleted successfully.'); //success
         }
