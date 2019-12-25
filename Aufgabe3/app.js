@@ -38,7 +38,7 @@ csvParser
 
 //ITEMS
 //returning all items from JSON
-app.get('/items/', (req, res) => {
+app.get('/items', (req, res) => {
     return res.send(json);
 });
 
@@ -103,16 +103,21 @@ app.get('/properties/:num', (req, res) => {
     if (props.length - 1 >= parseInt(num) && parseInt(num) >= 0) {
         return res.send(props[num]);
     } else {
+        //to implement user feedback:
         return res.send('No such property value'); //if num not exist
     }
 });
 
+// to parse right json Data
+// especially for JSONData
+app.use(bodyParser.urlencoded({ extended: false }));
+
 //POST
-//Items
+//Add Items
 app.post('/items', (req, res) => {
-    var name = req.query.name;
-    var birthrate = req.query.birthrate;
-    var cellphones = req.query.cellphones;
+    var name = req.body.name;
+    var birthrate = req.body.birthrate;
+    var cellphones = req.body.cellphones;
 
     var ids = new Array();
     // collect ids
@@ -124,13 +129,19 @@ app.post('/items', (req, res) => {
     var id = parseInt(ids[ids.length - 1], 10) + 1;
     // build object
     var obj = {
-        'name': name,
         'id': id.toString().length < 2 ? "00" + id.toString() : "0" + id.toString(),
+        'name': name,
         'birth_rate_per_1000': birthrate,
         'cell_phones_per_100': cellphones,
+        'children_per_woman': '',
+        'electricity_consumption_per_capita': '',
+        'internet_user_per_100': ''
     }
+
     // add to list
     json.push(obj);
+    return res.send(json)
+    //to implement user feedback:
     return res.send('Added country ' + name + ' to list');
 });
 
@@ -140,6 +151,8 @@ app.delete('/items', (req, res) => {
     // delete if theres something to delete
     if (json.length) {
         var last_ele = json.pop();
+        return res.send(json);
+        //to implement user feedback:
         return res.send('Deleted last country: ' + last_ele.name + '!');
     } else {
         return res.send('No items to delete!');
@@ -154,9 +167,12 @@ app.delete('/items/:id', (req, res) => {
             var id = json[i].id;
             // delete item at index
             json.splice(i, 1);
+            return res.send(json);
+            //to implement user feedback:
             return res.send('Item ' + id + ' deleted successfully.'); //success
         }
     }
+    //to implement user feedback:
     return res.send('No such id ' + req.params.id + ' in database'); //no success
 });
 

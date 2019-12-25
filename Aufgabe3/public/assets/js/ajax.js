@@ -2,7 +2,7 @@ $(document).ready(function () {
     
     $.ajax({
         type: "GET",
-        url: "/items/",
+        url: "/items",
         async: true,
         success: function(data) {
             var table = $('#table_body')
@@ -30,7 +30,6 @@ $(document).ready(function () {
             for (var i = 0; i < data.length; i++) {
                 $dropdown.append($("<option />").val(i).text(data[i]));
             }
-            
         }, error: function(jqXHR, text, err) {
         // Handle error if occured
         }
@@ -71,3 +70,150 @@ $("#country_filter").submit(function(e) {
     });
 
 });
+
+//Properties
+$("#show_selected_prop").click(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var prop = $("#prop_selection :selected").val();
+
+    $.ajax({
+        type: "GET",
+        url: "/properties/" + prop,
+        data: {},
+        async: true,
+        success: function(data) {
+            console.log(data)
+
+            //TODO: show if not showed (denke ich)
+        }, error: function(jqXHR, text, err) {
+        // Handle error if occured
+        }
+    });
+    
+
+})
+
+$("#hide_selected_prop").click(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var prop = $("#prop_selection :selected").val();
+
+    $.ajax({
+        type: "GET",
+        url: "/properties/" + prop,
+        data: {},
+        async: true,
+        success: function(data) {
+            console.log(data)
+
+            //TODO: hide if not hided (denke ich)
+        }, error: function(jqXHR, text, err) {
+        // Handle error if occured
+        }
+    });
+    
+
+})
+
+//Country Add
+$("#country_add").submit(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var form = $(this).serializeArray();
+    var data = {}
+    data['name'] = form[0].value
+    data['birthrate'] = form[1].value
+    data['cellphones'] = form[2].value
+
+    $.ajax({
+        type: "POST",
+        url: "/items",
+        data: data,
+        async: true,
+        success: function(data) {
+
+            var table = $('#table_body')
+                //to empty the table
+                table.empty()
+                for (var i = 0; i < data.length; i++) {
+                    var name = data[i].name
+                    var id = data[i].id
+                    var birthrate = data[i].birth_rate_per_1000
+                    var cell_phones = data[i].cell_phones_per_100
+                    var children = data[i].children_per_woman
+                    var elec = data[i].electricity_consumption_per_capita
+                    var inet = data[i].internet_user_per_100
+                    table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
+                }
+        }, error: function(jqXHR, text, err) {
+        // Handle error if occured
+        }
+    });
+
+})
+
+//Delete last country
+$("#country_delete").submit(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var form = $(this).serializeArray();
+    
+    
+    if (form[0].value == undefined) {
+        $.ajax({
+            type: "DELETE",
+            url: "/items",
+            data: {},
+            async: true,
+            success: function(data) {
+                var table = $('#table_body')
+                    //to empty the table
+                    table.empty()
+                if (data.length > 0){
+                    for (var i = 0; i < data.length; i++) {
+                        var name = data[i].name
+                        var id = data[i].id
+                        var birthrate = data[i].birth_rate_per_1000
+                        var cell_phones = data[i].cell_phones_per_100
+                        var children = data[i].children_per_woman
+                        var elec = data[i].electricity_consumption_per_capita
+                        var inet = data[i].internet_user_per_100
+                        table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
+                    }
+                }
+            }, error: function(jqXHR, text, err) {
+            // Handle error if occured
+            }
+        });
+    } else {
+        $.ajax({
+            type: "DELETE",
+            url: "/items/" + form[0].value,
+            data: {},
+            async: true,
+            success: function(data) {
+                var table = $('#table_body')
+
+                    //to empty the table
+                    table.empty()
+                if (data.length > 0){
+                    for (var i = 0; i < data.length; i++) {
+                        var name = data[i].name
+                        var id = data[i].id
+                        var birthrate = data[i].birth_rate_per_1000
+                        var cell_phones = data[i].cell_phones_per_100
+                        var children = data[i].children_per_woman
+                        var elec = data[i].electricity_consumption_per_capita
+                        var inet = data[i].internet_user_per_100
+                        table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
+                    }
+                }
+            }, error: function(jqXHR, text, err) {
+            // Handle error if occured
+            }
+        });
+    }
+
+});
+
