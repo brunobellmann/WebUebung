@@ -156,6 +156,7 @@ app.delete('/items', (req, res) => {
     // delete if theres something to delete
     if (json.length) {
         var last_ele = json.pop();
+        console.log(last_ele)
         return res.status(201).send(new Array(json, last_ele));
     } else {
         // no further item

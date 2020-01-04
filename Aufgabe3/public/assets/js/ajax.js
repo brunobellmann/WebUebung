@@ -113,8 +113,7 @@ $("#show_selected_prop").click(function(e) {
         data: {},
         async: true,
         success: function(data) {
-            console.log(data)
-            $('td:nth-child(' + prop+1 + '),th:nth-child(' + prop+1 + ')').show();
+            $('td:nth-child(' + (parseInt(prop)+1) + '),th:nth-child(' + (parseInt(prop)+1) + ')').show();
             //TODO: show if not showed (denke ich)
         }, error: function(jqXHR, text, err) {
             alert('No such property value')
@@ -128,14 +127,14 @@ $("#hide_selected_prop").click(function(e) {
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     var prop = $("#prop_selection :selected").val();
-
+    console.log(prop)
     $.ajax({
         type: "GET",
         url: "/properties/" + prop,
         data: {},
         async: true,
         success: function(data) {
-            $('td:nth-child(' + prop+1 + '),th:nth-child(' + prop+1 + ')').hide();
+            $('td:nth-child(' + (parseInt(prop)+1) + '),th:nth-child(' + (parseInt(prop)+1) + ')').hide();
         }, error: function(jqXHR, text, err) {
             alert('No such property available')
         }
@@ -174,7 +173,7 @@ $("#country_add").submit(function(e) {
                     var inet = data[i].internet_user_per_100
                     table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                 }
-                alert('Added country ' + data['name'] + ' to list!')
+                alert('Added country ' + data[data.length - 1]['name'] + ' to list!')
         }, error: function(jqXHR, text, err) {
             alert('Not all of three properties are given.')
         }
@@ -200,15 +199,14 @@ $("#country_delete").submit(function(e) {
                 table.empty()
                 // check if data is arry oder failure text message
                 if (Array.isArray(data[0])){
-                    var data = data[0]
-                    for (var i = 0; i < data.length; i++) {
-                        var name = data[i].name
-                        var id = data[i].id
-                        var birthrate = data[i].birth_rate_per_1000
-                        var cell_phones = data[i].cell_phones_per_100
-                        var children = data[i].children_per_woman
-                        var elec = data[i].electricity_consumption_per_capita
-                        var inet = data[i].internet_user_per_100
+                    for (var i = 0; i < data[0].length; i++) {
+                        var name = data[0][i].name
+                        var id = data[0][i].id
+                        var birthrate = data[0][i].birth_rate_per_1000
+                        var cell_phones = data[0][i].cell_phones_per_100
+                        var children = data[0][i].children_per_woman
+                        var elec = data[0][i].electricity_consumption_per_capita
+                        var inet = data[0][i].internet_user_per_100
                         table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                     }
                 }
