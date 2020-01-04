@@ -46,10 +46,11 @@ app.get('/items', (req, res) => {
 app.get('/items/:id', (req, res) => {
     for (var i = 0; i < json.length; i++) {
         if (json[i].id === req.params.id) {
-            return res.send(json[i]);
+            return res.status(201).send(json[i]);
         }
     }
-    return res.send('No such id ' + req.params.id + ' in database');
+    // no such id
+    return res.status(301).send('fail');
 });
 
 // returning all countries between id1 and id2
@@ -65,7 +66,8 @@ app.get('/items/:id1/:id2', (req, res) => {
     ids.sort()
     // check valid range
     if (ids[0] > id1 || ids[ids.length - 1] < id2 || id1 > id2) {
-        return res.send('Range not possible'); //if Range not exists
+        console.log('err')
+        return res.status(301).send('Range not possible'); //if Range not exists
     }
     // collect items in range
     for (var i = 0; i < json.length; i++) {
@@ -73,7 +75,7 @@ app.get('/items/:id1/:id2', (req, res) => {
             arr.push(json[i]);
         }
     }
-    return res.send(arr);
+    return res.status(201).send(arr);
 });
 
 //PROPERTIES
@@ -86,7 +88,7 @@ app.get('/properties', (req, res) => {
             props.push(key);
         }
     }
-    return res.send(props);
+    return res.status(201).send(props);
 });
 
 //returning property with number num
@@ -101,10 +103,9 @@ app.get('/properties/:num', (req, res) => {
     }
     // check prop num in range or not
     if (props.length - 1 >= parseInt(num) && parseInt(num) >= 0) {
-        return res.send(props[num]);
+        return res.status(201).send(props[num]);
     } else {
-        //to implement user feedback:
-        return res.send('No such property value'); //if num not exist
+        return res.status(301).send('No such property value'); //if num not exist
     }
 });
 
@@ -118,6 +119,12 @@ app.post('/items', (req, res) => {
     var name = req.body.name;
     var birthrate = req.body.birthrate;
     var cellphones = req.body.cellphones;
+
+    // if any field is empty
+    if (!birthrate || !cellphones || !name) {
+        console.log('dd')
+        return res.status(301).send('fail');
+    }
 
     var ids = new Array();
     // collect ids
@@ -140,9 +147,7 @@ app.post('/items', (req, res) => {
 
     // add to list
     json.push(obj);
-    return res.send(json)
-    //to implement user feedback:
-    return res.send('Added country ' + name + ' to list');
+    return res.status(201).send(json)
 });
 
 //DELETE
@@ -151,11 +156,10 @@ app.delete('/items', (req, res) => {
     // delete if theres something to delete
     if (json.length) {
         var last_ele = json.pop();
-        return res.send(json);
-        //to implement user feedback:
-        return res.send('Deleted last country: ' + last_ele.name + '!');
+        return res.status(201).send(new Array(json, last_ele));
     } else {
-        return res.send('No items to delete!');
+        // no further item
+        return res.status(301).send('No more items to delete');
     }
     
 });
@@ -167,13 +171,11 @@ app.delete('/items/:id', (req, res) => {
             var id = json[i].id;
             // delete item at index
             json.splice(i, 1);
-            return res.send(json);
-            //to implement user feedback:
-            return res.send('Item ' + id + ' deleted successfully.'); //success
+            return res.status(201).send(json);
         }
     }
-    //to implement user feedback:
-    return res.send('No such id ' + req.params.id + ' in database'); //no success
+    // id dont exist
+    return res.status(301).send('No such id ' + req.params.id + ' in database');
 });
 
 
