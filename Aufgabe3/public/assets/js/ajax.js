@@ -65,9 +65,11 @@ $("#country_filter").submit(function(e) {
                     var inet = data.internet_user_per_100
                     //var vervollständigen und unten den td string anpassen
                     table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
+                    $('#PopUpStatus').hide()
                 }
             }, error: function(jqXHR, text, err) {
                 // trigger status
+                $('#PopUpStatus').show()
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
                 $('#statusMessage').html('No such id ' + form[0].value + ' in database');
             }
@@ -95,9 +97,11 @@ $("#country_filter").submit(function(e) {
                         var elec = data[i].electricity_consumption_per_capita
                         var inet = data[i].internet_user_per_100
                         table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
+                        $('#PopUpStatus').hide()
                     }
                 }
             }, error: function(jqXHR, text, err) {
+                $('#PopUpStatus').show()
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
                 $('#statusMessage').html('Range not possible');
                 
@@ -186,9 +190,11 @@ $("#country_add").submit(function(e) {
                     var inet = data[i].internet_user_per_100
                     table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                 }
+                $('#PopUpStatus').show()
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusGreen');
                 $('#statusMessage').html('Added country ' + data[data.length - 1]['name'] + ' to list!');
         }, error: function(jqXHR, text, err) {
+            $('#PopUpStatus').show()
             $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
             $('#statusMessage').html('Not all of three properties are given.');
         }
@@ -226,9 +232,11 @@ $("#country_delete").submit(function(e) {
                     }
                 }
 
+                $('#PopUpStatus').show()
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusGreen');
                 $('#statusMessage').html('Deleted last country: ' + data[1].name + ' !');
             }, error: function(jqXHR, text, err) {
+                $('#PopUpStatus').show()
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
                 $('#statusMessage').html('No items to delete!');
             }
@@ -255,10 +263,11 @@ $("#country_delete").submit(function(e) {
                         table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                     } 
                 }
-
+                $('#PopUpStatus').show()
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusGreen');
                 $('#statusMessage').html('Item ' + form[0].value + ' deleted successfully');
             }, error: function(jqXHR, text, err) {
+                $('#PopUpStatus').show()
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
                 $('#statusMessage').html('No such id ' + form[0].value + ' in database');
             }
