@@ -6,6 +6,7 @@ $(document).ready(function () {
         async: true,
         success: function(data) {
             var table = $('#table_body')
+            //build table
             for (var i = 0; i < data.length; i++) {
                 var name = data[i].name
                 var id = data[i].id
@@ -66,6 +67,7 @@ $("#country_filter").submit(function(e) {
                     table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                 }
             }, error: function(jqXHR, text, err) {
+                // trigger status
                 $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
                 $('#statusMessage').html('No such id ' + form[0].value + ' in database');
             }
@@ -118,9 +120,10 @@ $("#show_selected_prop").click(function(e) {
         success: function(data) {
             var num = ((parseInt(prop) > 6) ? 6 : parseInt(prop));
             $('td:nth-child(' + (parseInt(num)+1) + ')').removeAttr("style");
+            $('#PopUpStatus').hide()
         }, error: function(jqXHR, text, err) {
 
-
+            $('#PopUpStatus').show()
             $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
             $('#statusMessage').html('No such property available');
         }
@@ -142,7 +145,9 @@ $("#hide_selected_prop").click(function(e) {
         success: function(data) {
             var num = ((parseInt(prop) > 6) ? 6 : parseInt(prop));
             $('td:nth-child(' + (parseInt(num)+1) + ')').css('display','table-column');
+            $('#PopUpStatus').hide()
         }, error: function(jqXHR, text, err) {
+            $('#PopUpStatus').show()
             $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
             $('#statusMessage').html('No such property available');
         }
