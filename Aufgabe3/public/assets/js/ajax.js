@@ -66,10 +66,11 @@ $("#country_filter").submit(function(e) {
                     table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                 }
             }, error: function(jqXHR, text, err) {
-                alert('No such id ' + form[0].value + ' in database')
+                $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
+                $('#statusMessage').html('No such id ' + form[0].value + ' in database');
             }
         });
-    } else { // form[1].value
+    } else {
 
         var ids = form[1].value.split("-")
 
@@ -95,7 +96,9 @@ $("#country_filter").submit(function(e) {
                     }
                 }
             }, error: function(jqXHR, text, err) {
-                alert('Range not possible')
+                $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
+                $('#statusMessage').html('Range not possible');
+                
             }
         });
     }
@@ -116,7 +119,10 @@ $("#show_selected_prop").click(function(e) {
             $('td:nth-child(' + (parseInt(prop)+1) + '),th:nth-child(' + (parseInt(prop)+1) + ')').show();
             //TODO: show if not showed (denke ich)
         }, error: function(jqXHR, text, err) {
-            alert('No such property value')
+
+
+            $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
+            $('#statusMessage').html('No such property value');
         }
     });
     
@@ -136,6 +142,10 @@ $("#hide_selected_prop").click(function(e) {
         success: function(data) {
             $('td:nth-child(' + (parseInt(prop)+1) + '),th:nth-child(' + (parseInt(prop)+1) + ')').hide();
         }, error: function(jqXHR, text, err) {
+            //Fraglich
+
+            $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
+            $('#statusMessage').html('No such property available');
             alert('No such property available')
         }
     });
@@ -173,9 +183,11 @@ $("#country_add").submit(function(e) {
                     var inet = data[i].internet_user_per_100
                     table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                 }
-                alert('Added country ' + data[data.length - 1]['name'] + ' to list!')
+                $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusGreen');
+                $('#statusMessage').html('Added country ' + data[data.length - 1]['name'] + ' to list!');
         }, error: function(jqXHR, text, err) {
-            alert('Not all of three properties are given.')
+            $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
+            $('#statusMessage').html('Not all of three properties are given.');
         }
     });
 
@@ -210,9 +222,12 @@ $("#country_delete").submit(function(e) {
                         table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                     }
                 }
-                alert('Deleted last country: ' + data[1].name + ' !')
+
+                $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusGreen');
+                $('#statusMessage').html('Deleted last country: ' + data[1].name + ' !');
             }, error: function(jqXHR, text, err) {
-                alert('No items to delete!')
+                $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
+                $('#statusMessage').html('No items to delete!');
             }
         });
     } else {
@@ -237,9 +252,12 @@ $("#country_delete").submit(function(e) {
                         table.append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+birthrate+'</td><td>'+cell_phones+'</td><td>'+children+'</td><td>'+elec+'</td><td>'+inet+'</td></tr>')
                     } 
                 }
-                alert('Item ' + form[0].value + ' deleted successfully')
+
+                $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusGreen');
+                $('#statusMessage').html('Item ' + form[0].value + ' deleted successfully');
             }, error: function(jqXHR, text, err) {
-                alert('No such id ' + form[0].value + ' in database')
+                $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
+                $('#statusMessage').html('No such id ' + form[0].value + ' in database');
             }
         });
     }

@@ -356,6 +356,34 @@ footer > .container > div.right {
 	text-align: right;
 }
 
+/* Custom CSS */
+
+.statusGreen {
+	width: 300px;
+	height: auto;
+	margin: 0 auto;
+	display: block;
+	visibility: visible !important;
+	color: white;
+	padding: 15px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	background: #34a854;
+}
+
+.statusRed {
+	width: 300px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	visibility: visible !important;
+	color: white;
+	padding: 15px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	background: #ea4336;
+}
+
 /* Media Queries */
 
 /********************************************************
