@@ -66,7 +66,6 @@ app.get('/items/:id1/:id2', (req, res) => {
     ids.sort()
     // check valid range
     if (ids[0] > id1 || ids[ids.length - 1] < id2 || id1 > id2) {
-        console.log('err')
         return res.status(301).send('Range not possible'); //if Range not exists
     }
     // collect items in range
@@ -102,7 +101,7 @@ app.get('/properties/:num', (req, res) => {
         }
     }
     // check prop num in range or not
-    if (props.length - 1 >= parseInt(num) && parseInt(num) >= 0) {
+    if (parseInt(num) <= 5 || parseInt(num) === 9) {
         return res.status(201).send(props[num]);
     } else {
         return res.status(301).send('No such property value'); //if num not exist
@@ -122,7 +121,6 @@ app.post('/items', (req, res) => {
 
     // if any field is empty
     if (!birthrate || !cellphones || !name) {
-        console.log('dd')
         return res.status(301).send('fail');
     }
 
@@ -156,7 +154,6 @@ app.delete('/items', (req, res) => {
     // delete if theres something to delete
     if (json.length) {
         var last_ele = json.pop();
-        console.log(last_ele)
         return res.status(201).send(new Array(json, last_ele));
     } else {
         // no further item

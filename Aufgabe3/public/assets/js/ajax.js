@@ -116,13 +116,13 @@ $("#show_selected_prop").click(function(e) {
         data: {},
         async: true,
         success: function(data) {
-            $('td:nth-child(' + (parseInt(prop)+1) + '),th:nth-child(' + (parseInt(prop)+1) + ')').show();
-            //TODO: show if not showed (denke ich)
+            var num = ((parseInt(prop) > 6) ? 6 : parseInt(prop));
+            $('td:nth-child(' + (parseInt(num)+1) + ')').removeAttr("style");
         }, error: function(jqXHR, text, err) {
 
 
             $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
-            $('#statusMessage').html('No such property value');
+            $('#statusMessage').html('No such property available');
         }
     });
     
@@ -133,20 +133,18 @@ $("#hide_selected_prop").click(function(e) {
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     var prop = $("#prop_selection :selected").val();
-    console.log(prop)
+    
     $.ajax({
         type: "GET",
         url: "/properties/" + prop,
         data: {},
         async: true,
         success: function(data) {
-            $('td:nth-child(' + (parseInt(prop)+1) + '),th:nth-child(' + (parseInt(prop)+1) + ')').hide();
+            var num = ((parseInt(prop) > 6) ? 6 : parseInt(prop));
+            $('td:nth-child(' + (parseInt(num)+1) + ')').css('display','table-column');
         }, error: function(jqXHR, text, err) {
-            //Fraglich
-
             $('#PopUpStatus').removeClass('statusGreen statusRed').addClass('statusRed');
             $('#statusMessage').html('No such property available');
-            alert('No such property available')
         }
     });
     
